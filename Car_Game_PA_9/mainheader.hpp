@@ -1,6 +1,3 @@
-
-#pragma once
-
 /*
 
 Names: Iyke Odum, Austin Daniels, Kadara Tandia
