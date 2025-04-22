@@ -15,7 +15,7 @@ int main(void) {
 	Texture backgroundTexture;
 	backgroundTexture.loadFromFile("images/top down road 1.png");
 
-
+	//create the sprites for the background -- these will loop to create "movement"
 	Sprite bg1(backgroundTexture);
 	Sprite bg2(backgroundTexture);
 
