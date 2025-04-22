@@ -21,6 +21,7 @@ to a game or graphical application of our choice
 using std::cin;
 using std::cout;
 using std::endl;
+using std::optional;
 using std::vector;
 
 using namespace sf;
