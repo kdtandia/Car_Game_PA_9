@@ -1,3 +1,21 @@
+/*
+
+Names: Iyke Odum, Austin Daniels, Kadara Tandia
+Assignment: Programming Assignment 9
+Due: 4/23/2025
+Description: For this final assignment, we are required to create a solution, as a team,
+to a game or graphical application of our choice
+
+
+
+UPDATES NEEDED:
+
+-create classes for background and car
+-create main menu
+-add obstacales
+-allow customization of car? (change color)
+
+*/
 #include "mainheader.hpp"
 
 int main(void) {
@@ -7,13 +25,13 @@ int main(void) {
 	window.setFramerateLimit(60);
 
 	//get the car sprite
-	Texture carTexture;
+	Texture carTexture; //texture sourced from -- https://www.youtube.com/watch?v=YzhhVHb0WVY
 	carTexture.loadFromFile("images/car.png");
 	Sprite car(carTexture);
 
 	//set the background
-	Texture backgroundTexture;
-	backgroundTexture.loadFromFile("images/top down road 1.png");
+	Texture backgroundTexture; //texture sourced from -- https://opengameart.org/content/2d-top-down-highway-background
+	backgroundTexture.loadFromFile("images/top down road 1.png"); 
 
 	//create the sprites for the background -- these will loop to create "movement"
 	Sprite bg1(backgroundTexture);
