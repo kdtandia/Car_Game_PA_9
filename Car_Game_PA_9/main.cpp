@@ -2,8 +2,9 @@
 
 int main(void) {
 
-	Vector2u windowframe(500, 600);
-	RenderWindow window(VideoMode(windowframe), "Top Down Driving Game");
+	
+	Vector2u windowframe(500, 600); //general vector type
+	RenderWindow window(VideoMode(windowframe), "Driving Game");
 	window.setFramerateLimit(60);
 
 	//get the car sprite
@@ -72,9 +73,10 @@ int main(void) {
 			bg2.setPosition({ 0, bg1.getPosition().y - bgHeight });
 		}
 
-
+		//move the car
 		car.move(movement);
 
+		//draw all the game contents
 		window.clear();
 		window.draw(bg1);
 		window.draw(bg2);
