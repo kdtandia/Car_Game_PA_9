@@ -136,13 +136,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="obstacles.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mainheader.hpp" />
+    <ClInclude Include="header.hpp" />
+    <ClInclude Include="obstacles.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\car.png" />
     <Image Include="images\top down road 1.png" />
+    <Image Include="images\trash bag.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

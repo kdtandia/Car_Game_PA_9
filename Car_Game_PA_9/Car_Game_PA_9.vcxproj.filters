@@ -18,10 +18,27 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="obstacles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mainheader.hpp">
+    <ClInclude Include="header.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="obstacles.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\car.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\top down road 1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\trash bag.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

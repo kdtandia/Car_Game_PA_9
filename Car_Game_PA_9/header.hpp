@@ -15,12 +15,17 @@ to a game or graphical application of our choice
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
+#include <ctime>
 
 
 //using statements
 using std::cin;
 using std::cout;
 using std::endl;
+using std::srand; //using for randomness in the obstacles
+using std::time;  //using for randomness in the obstacles
+using std::string;
 using std::optional;
 using std::vector;
 
