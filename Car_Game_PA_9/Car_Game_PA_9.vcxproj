@@ -140,6 +140,10 @@
   <ItemGroup>
     <ClInclude Include="mainheader.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\car.png" />
+    <Image Include="images\top down road 1.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
