@@ -5,14 +5,14 @@
 Description: This class actively manages all of the obstacles on the screen
 It is responsible for updating and deleting all of the obstacles
 */
-class Obstacles {
+class ObstacleManager {
 public:
 
 	//constructor for obscales
-	Obstacles(const string& newTexturePath, Vector2u newWindowSize, float newSpawnInterval, float newSpeed);
+	ObstacleManager(Texture &newTexture, Vector2u newWindowSize, float newSpawnInterval, float newSpeed);
 	void update(float changeInTime);
 	void draw(RenderWindow& window);
-
+	
 	//getter
 	const vector<Sprite>& getObstacles() const;
 

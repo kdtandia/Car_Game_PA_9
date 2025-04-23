@@ -42,30 +42,29 @@ int main(void) {
 
 	float spawnInterval = 1.0f; //how fast the trash bags spawn - the lower the faster 
 	float obstacleSpeed = 4.0f; //how fast the obstacles scroll down the screen 
-	Obstacles obstacles("images/trash bag.png", windowSize, spawnInterval, obstacleSpeed);
+	Texture obstacleTexture("images/trash bag.png");
+	ObstacleManager obstacles(obstacleTexture, windowSize, spawnInterval, obstacleSpeed);
 
-	//get the car sprite
+	
 	Texture carTexture("images/car.png"); //texture sourced from -- https://www.youtube.com/watch?v=YzhhVHb0WVY
 	float carSpeed = 5.0f;
 	Car playerCar(carTexture, windowSize, carSpeed);
-	// Sprite car(carTexture);
 
 
-	//set the background
 	Vector2f bgScale(2.0f, 4.0f);
 	float scrollSpeed = 4.0f;
-	Texture bgTexture("images/top down road 1.png");
+	Texture bgTexture("images/top down road 1.png"); //texture sourced from -- 
 	Background background(bgTexture, windowSize, bgScale, scrollSpeed);
 
 
 	//car.setPosition({ 225, 550 });
 
-	Clock changeClock; //track the time
+	Clock counter; //track the time
 
 	//main game loop
 	while (window.isOpen()) {
 
-		Time changeTime = changeClock.restart(); //starts the timer back to 0
+		Time changeTime = counter.restart(); //starts the timer back to 0
 		float changeSeconds = changeTime.asSeconds();
 		/* This could also be used for a time based scoring system
 		Example: Every 10 second the player gets an additional 100 points */

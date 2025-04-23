@@ -1,6 +1,6 @@
 
 
-#include "obstacles.hpp"
+#include "obstaclemanager.hpp"
 
 class Car : public ObjectManager {
 
@@ -17,7 +17,7 @@ public:
 
 	void update() override;
 	void draw(RenderWindow& window) override;
-	void checkCollision(Obstacles& obstacles);
+	void checkCollision(ObstacleManager& obstacles);
 private:
 
 	void checkBounds();

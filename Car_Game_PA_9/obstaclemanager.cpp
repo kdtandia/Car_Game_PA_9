@@ -1,13 +1,10 @@
-#include "obstacles.hpp"
+#include "obstaclemanager.hpp"
 
 //constructor for the obstacle manager
-Obstacles::Obstacles(const string& newTexturePath, Vector2u newWindowSize, float newSpawnInterval, float newSpeed) {
+ObstacleManager::ObstacleManager(Texture &newTexture, Vector2u newWindowSize, float newSpawnInterval, float newSpeed) {
 	
-	//check to make sure the obstacle texture loaded properly
-	if (!this->obstacleTexture.loadFromFile(newTexturePath)) {
-		cerr << "Failed to load obstacle texture from: " << newTexturePath << endl;
-	}
-
+	
+	this->obstacleTexture = newTexture;
 	this->windowSize = newWindowSize;
 	this->spawnInterval = newSpawnInterval;
 	this->speed = newSpeed;
@@ -15,7 +12,7 @@ Obstacles::Obstacles(const string& newTexturePath, Vector2u newWindowSize, float
 }
 
 //update the screen
-void Obstacles::update(float changeInTime) {
+void ObstacleManager::update(float changeInTime) {
 	//update the last spawn time
 	this->lastSpawnTime += changeInTime;
 
@@ -37,7 +34,7 @@ void Obstacles::update(float changeInTime) {
 }
 
 //display the obstacles on the screen
-void Obstacles::draw(RenderWindow& window) {
+void ObstacleManager::draw(RenderWindow& window) {
 	
 	//draw all the obstacles
 	for (const auto& obstacle : this->obstacles) {
@@ -46,13 +43,14 @@ void Obstacles::draw(RenderWindow& window) {
 		
 }
 
+
 //get the obstacles class member
-const vector<Sprite>& Obstacles::getObstacles() const
+const vector<Sprite>& ObstacleManager::getObstacles() const
 {
 	return this->obstacles;
 }
 
-void Obstacles::createObstacle() {
+void ObstacleManager::createObstacle() {
 
 	//create the obstacle sprite
 	Sprite obstacle(this->obstacleTexture);

@@ -54,10 +54,10 @@ void Car::draw(RenderWindow& window) {
 	window.draw(this->car);
 }
 
-void Car::checkCollision(Obstacles &obstacles) {
+void Car::checkCollision(ObstacleManager &obstacles) {
 	
-	for (const auto& obstacle : obstacles.getObstacles()) {
-		if (this->car.getGlobalBounds().findIntersection(obstacle.getGlobalBounds())) {
+	for (const auto& obs : obstacles.getObstacles()) {
+		if (this->car.getGlobalBounds().findIntersection(obs.getGlobalBounds())) {
 			//Car hit trash
 			/* Add end screen */
 			cout << "Car Crashed!" << endl; //placeholder
