@@ -6,14 +6,21 @@ Due: 4/23/2025
 Description: For this final assignment, we are required to create a solution, as a team,
 to a game or graphical application of our choice
 
-
-
 UPDATES NEEDED:
 
 -create classes for background and car
--create main menu
--add obstacales
+-create main menu (button to play the game and button for customization)
+-score system (time based or number of obstacles dodged based)
+-create end screen (display score)
 -allow customization of car? (change color)
+
+
+UPDATES COMPLETED:
+
+-created obstacles 
+-scrolling background
+-moving car
+
 
 */
 #include "obstacles.hpp"
@@ -28,8 +35,8 @@ int main(void) {
 	RenderWindow window(VideoMode(windowSize), "Top Down Driving Game");
 	window.setFramerateLimit(60);
 
-	float spawnInterval = 1.0f;
-	float obstacleSpeed = 4.0f;
+	float spawnInterval = 1.0f; //how fast the trash bags spawn - the lower the faster 
+	float obstacleSpeed = 4.0f; //how fast the obstacles scroll down the screen 
 	Obstacles obstacles("images/trash bag.png", windowSize, spawnInterval, obstacleSpeed);
 
 	//get the car sprite
@@ -59,7 +66,8 @@ int main(void) {
 	//set the initial position at the bottom of the screen
 	car.setPosition({ 225, 550 });
 
-	Clock changeClock;
+	Clock changeClock; //track the time
+
 	//main game loop
 	while (window.isOpen()) {
 
@@ -104,13 +112,11 @@ int main(void) {
 		if (bg2.getPosition().y >= windowSize.y) {
 			bg2.setPosition({ 0, bg1.getPosition().y - bgHeight });
 		}
-
 		
+		car.move(movement); //move the car with users movements
+		obstacles.update(changeSeconds); //
 
-		car.move(movement);
-		obstacles.update(changeSeconds);
-
-
+		//drawing all of the elements onto the window
 		window.clear();
 		window.draw(bg1);
 		window.draw(bg2);

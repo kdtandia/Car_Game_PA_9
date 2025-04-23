@@ -1,12 +1,14 @@
 #include "obstacles.hpp"
 
+//constructor for the obstacle manager
 Obstacles::Obstacles(const string& newTexturePath, Vector2u newWindowSize, float newSpawnInterval, float newSpeed) {
 	
+	//check to make sure the obstacle texture loaded properly
 	if (!this->obstacleTexture.loadFromFile(newTexturePath)) {
-		std::cerr << "Failed to load obstacle texture from: " << newTexturePath << std::endl;
+		std::cerr << "Failed to load obstacle texture from: " << newTexturePath << std::endl; //
 	}
 	else {
-		std::cout << "Obstacle texture loaded successfully.\n";
+		std::cout << "Obstacle texture loaded successfully.\n"; 
 	}
 
 	this->windowSize = newWindowSize;
@@ -15,6 +17,7 @@ Obstacles::Obstacles(const string& newTexturePath, Vector2u newWindowSize, float
 	this->lastSpawnTime = 0.f;
 }
 
+//update the screen
 void Obstacles::update(float changeInTime) {
 	//update the last spawn time
 	this->lastSpawnTime += changeInTime;
@@ -36,6 +39,7 @@ void Obstacles::update(float changeInTime) {
 	}
 }
 
+//display the obstacles on the screen
 void Obstacles::draw(RenderWindow& window) {
 	
 	//draw all the obstacles
@@ -45,12 +49,14 @@ void Obstacles::draw(RenderWindow& window) {
 		
 }
 
+//get the obstacles class member
 const vector<Sprite>& Obstacles::getObstacles() const
 {
 	return this->obstacles;
 }
 
 void Obstacles::createObstacle() {
+
 	//create the obstacle sprite
 	Sprite obstacle(this->obstacleTexture);
 
