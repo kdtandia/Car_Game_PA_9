@@ -38,6 +38,7 @@ int main(void) {
 	RenderWindow window(VideoMode(windowSize), "Top Down Driving Game");
 	window.setFramerateLimit(60);
 
+
 	float spawnInterval = 1.0f; //how fast the trash bags spawn - the lower the faster 
 	float obstacleSpeed = 4.0f; //how fast the obstacles scroll down the screen 
 	Obstacles obstacles("images/trash bag.png", windowSize, spawnInterval, obstacleSpeed);
@@ -49,7 +50,6 @@ int main(void) {
 
 	//set the background
 	Texture backgroundTexture; //texture sourced from -- https://opengameart.org/content/2d-top-down-highway-background
-	backgroundTexture.loadFromFile("images/top down road 1.png");
 
 	Vector2f bgScale(2.0f, 4.0f);
 	float scrollSpeed = 4.0f;

@@ -14,7 +14,7 @@ private:
 	vector<Sprite> backgrounds;
 	Vector2u windowSize;
 
-	Vector2f bgScale;
-	float bgHeight;
-	float scrollSpeed;
+	Vector2f bgScale; //scale to so that the vector fits the window properly
+	float bgHeight; //height of the scaled vector
+	float scrollSpeed; //speed that the background is scrolling at
 };
