@@ -2,6 +2,7 @@
 
 Names: Iyke Odum, Austin Daniels, Kadara Tandia
 Assignment: Programming Assignment 9
+Professor: Andrew O'Fallon
 Due: 4/23/2025
 Description: For this final assignment, we are required to create a solution, as a team,
 to a game or graphical application of our choice
