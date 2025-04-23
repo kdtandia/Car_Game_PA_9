@@ -9,7 +9,7 @@ to a game or graphical application of our choice
 
 UPDATES NEEDED:
 
--create classes for background and car
+-create classes for car
 -create main menu (button to play the game and button for customization)
 -score system (time based or number of obstacles dodged based)
 -create end screen (display score)
@@ -18,17 +18,19 @@ UPDATES NEEDED:
 
 UPDATES COMPLETED:
 
--created obstacles 
+-created obstacles
+-class for background
 -scrolling background
 -moving car
 
 
 */
 #include "obstacles.hpp"
+#include "background.hpp"
 
 int main(void) {
 
-	//randomness
+	//randomness -- Used for obstacles 
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	//creating the game window
@@ -47,24 +49,13 @@ int main(void) {
 
 	//set the background
 	Texture backgroundTexture; //texture sourced from -- https://opengameart.org/content/2d-top-down-highway-background
-	backgroundTexture.loadFromFile("images/top down road 1.png"); 
+	backgroundTexture.loadFromFile("images/top down road 1.png");
 
-	//create the sprites for the background -- these will loop to create "movement"
-	Sprite bg1(backgroundTexture);
-	Sprite bg2(backgroundTexture);
-
-	//scale the background to be twice as wide and long --  original image is too small
 	Vector2f bgScale(2.0f, 4.0f);
-	float bgHeight = backgroundTexture.getSize().y * bgScale.y;
+	float scrollSpeed = 4.0f;
+	Background background("images/top down road 1.png", windowSize, bgScale, scrollSpeed);
 
-	//scalling the background sprites 
-	bg1.setScale(bgScale);
-	bg2.setScale(bgScale);
 
-	bg1.setPosition({ 0,0 });
-	bg2.setPosition({ 0.f, bgHeight });
-
-	//set the initial position at the bottom of the screen
 	car.setPosition({ 225, 550 });
 
 	Clock changeClock; //track the time
@@ -103,24 +94,14 @@ int main(void) {
 		}
 
 		//Background Scrolling
-		float scrollSpeed = 4.0f;
-		bg1.move({ 0, scrollSpeed });
-		bg2.move({ 0, scrollSpeed });
-
-		if (bg1.getPosition().y >= windowSize.y) {
-			bg1.setPosition({ 0, bg2.getPosition().y - bgHeight });
-		}
-		if (bg2.getPosition().y >= windowSize.y) {
-			bg2.setPosition({ 0, bg1.getPosition().y - bgHeight });
-		}
+		background.scroll();
 		
 		car.move(movement); //move the car with users movements
 		obstacles.update(changeSeconds); //
 
 		//drawing all of the elements onto the window
 		window.clear();
-		window.draw(bg1);
-		window.draw(bg2);
+		background.draw(window);
 		obstacles.draw(window);
 		window.draw(car);
 		window.display();

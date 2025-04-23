@@ -135,10 +135,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="obstacles.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="background.hpp" />
     <ClInclude Include="header.hpp" />
     <ClInclude Include="obstacles.hpp" />
   </ItemGroup>

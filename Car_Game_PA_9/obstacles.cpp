@@ -5,10 +5,7 @@ Obstacles::Obstacles(const string& newTexturePath, Vector2u newWindowSize, float
 	
 	//check to make sure the obstacle texture loaded properly
 	if (!this->obstacleTexture.loadFromFile(newTexturePath)) {
-		std::cerr << "Failed to load obstacle texture from: " << newTexturePath << std::endl; //
-	}
-	else {
-		std::cout << "Obstacle texture loaded successfully.\n"; 
+		cerr << "Failed to load obstacle texture from: " << newTexturePath << endl;
 	}
 
 	this->windowSize = newWindowSize;

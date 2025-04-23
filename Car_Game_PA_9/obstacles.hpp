@@ -3,7 +3,7 @@
 
 /*
 Description: This class actively manages all of the obstacles on the screen
-It is responsible for updating and deleting all of the obstacles on the screen
+It is responsible for updating and deleting all of the obstacles
 */
 class Obstacles {
 public:
