@@ -25,6 +25,7 @@ UPDATES COMPLETED:
 
 
 */
+
 #include "background.hpp"
 #include "car.hpp"
 
@@ -53,7 +54,8 @@ int main(void) {
 	//set the background
 	Vector2f bgScale(2.0f, 4.0f);
 	float scrollSpeed = 4.0f;
-	Background background("images/top down road 1.png", windowSize, bgScale, scrollSpeed);
+	Texture bgTexture("images/top down road 1.png");
+	Background background(bgTexture, windowSize, bgScale, scrollSpeed);
 
 
 	//car.setPosition({ 225, 550 });
@@ -76,13 +78,9 @@ int main(void) {
 
 		}
 
-		playerCar.drive();
-
-		//Background Scrolling
-		background.scroll();
-		
-		//car.move(movement); //move the car with users movements
-		obstacles.update(changeSeconds); //
+		playerCar.update();
+		background.update();
+		obstacles.update(changeSeconds);
 
 		//drawing all of the elements onto the window
 		window.clear();

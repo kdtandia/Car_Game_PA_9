@@ -1,32 +1,27 @@
 
+
 #include "obstacles.hpp"
 
-class Car {
+class Car : public ObjectManager {
 
 public:
 
-	Car(Texture &newTexture, Vector2u newWindowSize, float newCarSpeed) : car(newTexture) {
+	//constructor for the car class 
+	Car(Texture &newTexture, Vector2u newWindowSize, float newSpeed) : ObjectManager(newTexture, newWindowSize, newSpeed), car(newTexture) {
 
-		this->carTexture = newTexture;
-		this->windowSize = newWindowSize;
-		this->carSpeed = newCarSpeed;
 		this->movement = Vector2f(0.f, 0.f);
 
+		//starting position dynamically starts at the bottom of the window regardless of size
 		this->car.setPosition({ (windowSize.x - car.getGlobalBounds().size.x) / 2.f ,windowSize.y - car.getGlobalBounds().size.y - 10.f });
 	}
 
-	void drive();
-	void checkBounds();
-	void draw(RenderWindow& window);
+	void update() override;
+	void draw(RenderWindow& window) override;
 	void checkCollision(Obstacles& obstacles);
 private:
 
-	Texture carTexture; //made a pointer to fix issues with refrencing
-	Vector2u windowSize;
+	void checkBounds();
+
 	Vector2f movement;
 	Sprite car;
-	float carSpeed;
-
-
-
 };

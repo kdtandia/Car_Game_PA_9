@@ -1,21 +1,21 @@
 #include "car.hpp"
 
 
-void Car::drive() {
+void Car::update() {
 	
 	this->movement = Vector2f(0.f, 0.f);
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Left)) {
-		this->movement.x -= this->carSpeed;
+		this->movement.x -= this->speed;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Key::Right)) {
-		this->movement.x += this->carSpeed;
+		this->movement.x += this->speed;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Key::Up)) {
-		this->movement.y -= this->carSpeed;
+		this->movement.y -= this->speed;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Key::Down)) {
-		this->movement.y += this->carSpeed;
+		this->movement.y += this->speed;
 	}
 
 	this->car.move(this->movement);

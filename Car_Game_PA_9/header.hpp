@@ -33,3 +33,22 @@ using std::vector;
 using std::array;
 
 using namespace sf;
+
+
+//Object Manager
+
+class ObjectManager {
+
+public:
+
+	ObjectManager(Texture& newTexture, Vector2u newWindowSize, float newSpeed) :
+		texture(newTexture), windowSize(newWindowSize), speed(newSpeed) {}
+
+	virtual void update() = 0;
+	virtual void draw(RenderWindow& window) = 0;
+
+protected:
+	Texture& texture;
+	Vector2u windowSize;
+	float speed;
+};
