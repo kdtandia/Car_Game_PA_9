@@ -4,7 +4,7 @@ Background::Background(const string& newTexturePath, Vector2u newWindowSize, Vec
 
 	//check to make sure the compiler is able to find the path
 	if (!this->bgTexture.loadFromFile(newTexturePath)) {
-		cerr << "Failed to load obstacle texture from: " << newTexturePath << endl;
+		cerr << "Failed to load background texture from: " << newTexturePath << endl;
 	}
 
 	//intialize data members

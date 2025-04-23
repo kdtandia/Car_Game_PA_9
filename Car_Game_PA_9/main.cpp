@@ -25,8 +25,8 @@ UPDATES COMPLETED:
 
 
 */
-#include "obstacles.hpp"
 #include "background.hpp"
+#include "car.hpp"
 
 int main(void) {
 
@@ -44,19 +44,19 @@ int main(void) {
 	Obstacles obstacles("images/trash bag.png", windowSize, spawnInterval, obstacleSpeed);
 
 	//get the car sprite
-	Texture carTexture; //texture sourced from -- https://www.youtube.com/watch?v=YzhhVHb0WVY
-	carTexture.loadFromFile("images/car.png");
-	Sprite car(carTexture);
+	Texture carTexture("images/car.png"); //texture sourced from -- https://www.youtube.com/watch?v=YzhhVHb0WVY
+	float carSpeed = 5.0f;
+	Car playerCar(carTexture, windowSize, carSpeed);
+	// Sprite car(carTexture);
+
 
 	//set the background
-	Texture backgroundTexture; //texture sourced from -- https://opengameart.org/content/2d-top-down-highway-background
-
 	Vector2f bgScale(2.0f, 4.0f);
 	float scrollSpeed = 4.0f;
 	Background background("images/top down road 1.png", windowSize, bgScale, scrollSpeed);
 
 
-	car.setPosition({ 225, 550 });
+	//car.setPosition({ 225, 550 });
 
 	Clock changeClock; //track the time
 
@@ -76,44 +76,23 @@ int main(void) {
 
 		}
 
-		//Movement
-		float carSpeed = 5.0f;
-		Vector2f movement(0, 0);
-
-		if (Keyboard::isKeyPressed(Keyboard::Key::Left)) {
-			movement.x -= carSpeed;
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Key::Right)) {
-			movement.x += carSpeed;
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Key::Up)) {
-			movement.y -= carSpeed;
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Key::Down)) {
-			movement.y += carSpeed;
-		}
+		playerCar.drive();
 
 		//Background Scrolling
 		background.scroll();
 		
-		car.move(movement); //move the car with users movements
+		//car.move(movement); //move the car with users movements
 		obstacles.update(changeSeconds); //
 
 		//drawing all of the elements onto the window
 		window.clear();
 		background.draw(window);
 		obstacles.draw(window);
-		window.draw(car);
+		playerCar.draw(window);
 		window.display();
 
-		for (const auto& obstacle : obstacles.getObstacles()) {
-			if (car.getGlobalBounds().findIntersection(obstacle.getGlobalBounds())) {
-				//Car hit trash
-				/* Add end screen */
-				cout << "Car Crashed!" << endl; //placeholder
-			}
-		}
-
+		playerCar.checkCollision(obstacles);
+		
 	}
 
 

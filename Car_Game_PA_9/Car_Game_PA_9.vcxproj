@@ -135,12 +135,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aiplayer.cpp" />
     <ClCompile Include="background.cpp" />
+    <ClCompile Include="car.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="obstacles.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aiplayer.hpp" />
     <ClInclude Include="background.hpp" />
+    <ClInclude Include="car.hpp" />
     <ClInclude Include="header.hpp" />
     <ClInclude Include="obstacles.hpp" />
   </ItemGroup>
