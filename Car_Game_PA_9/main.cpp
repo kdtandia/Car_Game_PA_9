@@ -55,7 +55,8 @@ int main(void) {
 	float scrollSpeed = 4.0f;
 	Texture bgTexture("images/top down road 1.png"); //texture sourced from -- 
 	Background background(bgTexture, windowSize, bgScale, scrollSpeed);
-
+    // Create AI player
+    AIPlayer aiPlayer(carTexture, windowSize);
 
 	//car.setPosition({ 225, 550 });
 
@@ -80,13 +81,16 @@ int main(void) {
 		playerCar.update();
 		background.update();
 		obstacles.update(changeSeconds);
+        aiPlayer.update(obstacles.getObstacles(), changeSeconds);
 
 		//drawing all of the elements onto the window
 		window.clear();
 		background.draw(window);
 		obstacles.draw(window);
 		playerCar.draw(window);
+		aiPlayer.draw(window);
 		window.display();
+       
 
 		playerCar.checkCollision(obstacles);
 		
