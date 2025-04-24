@@ -113,7 +113,7 @@ int main(void) {
 			font.openFromFile("fonts/ByteBounce.ttf"); //font sourced from - https://www.1001fonts.com/bytebounce-font.html
 
 			Text gameOver(font);
-			gameOver.setString("Game Over!\nPress R to restart");
+			gameOver.setString("Game Over!\nScore: " + std::to_string(score) + "\nPress R to restart");
 			gameOver.setCharacterSize(40);
 			gameOver.setFillColor(Color::White);
 
