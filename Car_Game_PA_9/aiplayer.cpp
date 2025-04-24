@@ -90,3 +90,4 @@ int AIPlayer::chooseBestLane(const vector<Sprite>& obstacles) {
     // No safe lanes found, choose a random one
     return rand() % 3;
 }
+     
