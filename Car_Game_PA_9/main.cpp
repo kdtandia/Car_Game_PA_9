@@ -9,7 +9,7 @@ to a game or graphical application of our choice
 
 UPDATES NEEDED:
 
--create classes for car
+
 -create main menu (button to play the game and button for customization)
 -score system (time based or number of obstacles dodged based)
 -create end screen (display score)
@@ -17,7 +17,7 @@ UPDATES NEEDED:
 
 
 UPDATES COMPLETED:
-
+-create classes for car
 -created obstacles
 -class for background
 -scrolling background
@@ -57,12 +57,14 @@ int main(void) {
 	Background background(bgTexture, windowSize, bgScale, scrollSpeed);
 
 
-	//car.setPosition({ 225, 550 });
+	GameState gameState = GameState::Playing;
 
 	Clock counter; //track the time
 
+
 	//main game loop
 	while (window.isOpen()) {
+
 
 		Time changeTime = counter.restart(); //starts the timer back to 0
 		float changeSeconds = changeTime.asSeconds();
@@ -77,18 +79,55 @@ int main(void) {
 
 		}
 
-		playerCar.update();
-		background.update();
-		obstacles.update(changeSeconds);
+		if (gameState == GameState::Playing) {
 
-		//drawing all of the elements onto the window
-		window.clear();
-		background.draw(window);
-		obstacles.draw(window);
-		playerCar.draw(window);
-		window.display();
+			playerCar.update();
+			background.update();
+			obstacles.update(changeSeconds);
 
-		playerCar.checkCollision(obstacles);
+			//drawing all of the elements onto the window
+			window.clear();
+			background.draw(window);
+			obstacles.draw(window);
+			playerCar.draw(window);
+			window.display();
+
+			playerCar.checkCollision(obstacles, gameState);
+
+		}
+		else if (gameState == GameState::EndScreen) {
+
+			window.clear();
+
+
+			Font font;
+			font.openFromFile("fonts/ByteBounce.ttf"); //font sourced from - https://www.1001fonts.com/bytebounce-font.html
+
+			Text gameOver(font);
+			gameOver.setString("Game Over!\nPress R to restart");
+			gameOver.setCharacterSize(40);
+			gameOver.setFillColor(Color::White);
+
+			FloatRect textBounds = gameOver.getLocalBounds();
+			gameOver.setOrigin({ textBounds.size.x / 2, textBounds.size.y / 2 });
+			gameOver.setPosition({ static_cast<float>(window.getSize().x / 2.f), static_cast<float>(window.getSize().y / 2.f) });
+
+
+			window.draw(gameOver);
+			window.display();
+
+			if (Keyboard::isKeyPressed(Keyboard::Key::R)) {
+				
+				gameState = GameState::Playing;
+				playerCar.restart();
+				background.restart();
+				obstacles.restart();
+				
+			}
+
+			continue;
+
+		}
 		
 	}
 

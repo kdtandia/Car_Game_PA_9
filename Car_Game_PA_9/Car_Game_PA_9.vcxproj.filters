@@ -53,6 +53,9 @@
     <ClInclude Include="obstacle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\car.png">
@@ -64,5 +67,10 @@
     <Image Include="images\trash bag.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\ByteBounce.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>

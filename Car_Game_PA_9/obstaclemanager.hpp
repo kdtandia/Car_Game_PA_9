@@ -12,7 +12,7 @@ public:
 	ObstacleManager(Texture &newTexture, Vector2u newWindowSize, float newSpawnInterval, float newSpeed);
 	void update(float changeInTime);
 	void draw(RenderWindow& window);
-	
+	void restart();
 	//getter
 	const vector<Sprite>& getObstacles() const;
 

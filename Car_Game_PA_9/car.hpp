@@ -17,7 +17,8 @@ public:
 
 	void update() override;
 	void draw(RenderWindow& window) override;
-	void checkCollision(ObstacleManager& obstacles);
+	void checkCollision(ObstacleManager& obstacles, GameState &gameState);
+	void restart() override;
 private:
 
 	void checkBounds();

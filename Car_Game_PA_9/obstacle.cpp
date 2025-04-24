@@ -1,8 +1,5 @@
 #include "obstacle.hpp"
 
-void Obstacle::update() {
-
-}
 
 void Obstacle::draw(RenderWindow& window) {
 	window.draw(this->obstacle);
@@ -11,3 +8,4 @@ void Obstacle::draw(RenderWindow& window) {
 void Obstacle::setPostion(Vector2f newPosition) {
 	this->obstacle.setPosition(newPosition);
 }
+

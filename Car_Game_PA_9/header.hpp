@@ -32,11 +32,10 @@ using std::optional;
 using std::vector;
 using std::array;
 
+
 using namespace sf;
 
-
 //Object Manager
-
 class ObjectManager {
 
 public:
@@ -46,9 +45,17 @@ public:
 
 	virtual void update() = 0;
 	virtual void draw(RenderWindow& window) = 0;
+	virtual void restart() = 0;
 
 protected:
 	Texture& texture;
 	Vector2u windowSize;
 	float speed;
+};
+
+//Game State
+enum GameState {
+	Menu, //for future use to add a menu
+	Playing,
+	EndScreen
 };

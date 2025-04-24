@@ -54,13 +54,15 @@ void Car::draw(RenderWindow& window) {
 	window.draw(this->car);
 }
 
-void Car::checkCollision(ObstacleManager &obstacles) {
+void Car::checkCollision(ObstacleManager &obstacles, GameState &gameState) {
 	
 	for (const auto& obs : obstacles.getObstacles()) {
 		if (this->car.getGlobalBounds().findIntersection(obs.getGlobalBounds())) {
-			//Car hit trash
-			/* Add end screen */
-			cout << "Car Crashed!" << endl; //placeholder
+			gameState = GameState::EndScreen;
 		}
 	}
+}
+
+void Car::restart() {
+	this->car.setPosition({ (windowSize.x - car.getGlobalBounds().size.x) / 2.f ,windowSize.y - car.getGlobalBounds().size.y - 10.f });
 }
