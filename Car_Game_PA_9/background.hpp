@@ -32,6 +32,7 @@ public:
 
 	void update() override;
 	void draw(RenderWindow& window) override;
+	void restart() override;
 private:
 	//Texture bgTexture;
 	vector<Sprite> backgrounds;

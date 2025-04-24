@@ -147,6 +147,7 @@
     <ClInclude Include="background.hpp" />
     <ClInclude Include="car.hpp" />
     <ClInclude Include="header.hpp" />
+    <ClInclude Include="menu.hpp" />
     <ClInclude Include="obstacle.hpp" />
     <ClInclude Include="obstaclemanager.hpp" />
   </ItemGroup>
@@ -154,6 +155,9 @@
     <Image Include="images\car.png" />
     <Image Include="images\top down road 1.png" />
     <Image Include="images\trash bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\ByteBounce.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

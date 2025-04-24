@@ -9,7 +9,7 @@ to a game or graphical application of our choice
 
 UPDATES NEEDED:
 
--create classes for car
+
 -create main menu (button to play the game and button for customization)
 -score system (time based or number of obstacles dodged based)
 -create end screen (display score)
@@ -17,7 +17,7 @@ UPDATES NEEDED:
 
 
 UPDATES COMPLETED:
-
+-create classes for car
 -created obstacles
 -class for background
 -scrolling background
@@ -53,17 +53,21 @@ int main(void) {
 
 	Vector2f bgScale(2.0f, 4.0f);
 	float scrollSpeed = 4.0f;
+	int score = 0;
+	float scoreTimer = 0.0f;
 	Texture bgTexture("images/top down road 1.png"); //texture sourced from -- 
 	Background background(bgTexture, windowSize, bgScale, scrollSpeed);
     // Create AI player
     AIPlayer aiPlayer(carTexture, windowSize);
 
-	//car.setPosition({ 225, 550 });
+	GameState gameState = GameState::Playing;
 
 	Clock counter; //track the time
 
+
 	//main game loop
 	while (window.isOpen()) {
+
 
 		Time changeTime = counter.restart(); //starts the timer back to 0
 		float changeSeconds = changeTime.asSeconds();
@@ -78,25 +82,80 @@ int main(void) {
 
 		}
 
-		playerCar.update();
-		background.update();
-		obstacles.update(changeSeconds);
-        aiPlayer.update(obstacles.getObstacles(), changeSeconds);
 
-		//drawing all of the elements onto the window
-		window.clear();
-		background.draw(window);
-		obstacles.draw(window);
-		playerCar.draw(window);
-		aiPlayer.draw(window);
-		window.display();
-       
+		if (gameState == GameState::Playing) {
 
-		playerCar.checkCollision(obstacles);
+			playerCar.update();
+			background.update();
+			obstacles.update(changeSeconds);
+
+			//drawing all of the elements onto the window
+			window.clear();
+			background.draw(window);
+			obstacles.draw(window);
+			playerCar.draw(window);
+      aiPlayer.draw(window);
+			window.display();
+
+			playerCar.checkCollision(obstacles, gameState);
+
+
+			// System to count the score over time
+			scoreTimer += changeSeconds;
+			if(scoreTimer >= 1.0f) {
+				score +=10;
+				scoreTimer= 0.0f;
+		}
+
+		}
+		else if (gameState == GameState::EndScreen) {
+
+			window.clear();
+
+
+			Font font;
+			font.openFromFile("fonts/ByteBounce.ttf"); //font sourced from - https://www.1001fonts.com/bytebounce-font.html
+
+			Text gameOver(font);
+			gameOver.setString("Game Over!\nScore: " + std::to_string(score) + "\nPress R to restart");
+			gameOver.setCharacterSize(40);
+			gameOver.setFillColor(Color::White);
+
+			FloatRect textBounds = gameOver.getLocalBounds();
+			gameOver.setOrigin({ textBounds.size.x / 2, textBounds.size.y / 2 });
+			gameOver.setPosition({ static_cast<float>(window.getSize().x / 2.f), static_cast<float>(window.getSize().y / 2.f) });
+
+
+			window.draw(gameOver);
+			window.display();
+			// Displaying the Score at the end of the game
+			Font font;
+			font.loadfromfile("fonts/ByteBounce.tff);
+			Text scoreText;
+			scoreText.setFont(font);
+			scoreText.setCharacterSize(24);
+			scoreText.setFillColor(Color::White);
+			scoreText.setString("Score: " + std::to_string(score));
+			scoreText.setPosition(10.f,10.f);
+			window.draw(scoreText);
+
+			if (Keyboard::isKeyPressed(Keyboard::Key::R)) {
+				
+				gameState = GameState::Playing;
+				playerCar.restart();
+				background.restart();
+				obstacles.restart();
+				
+			}
+
+			continue;
+
+		}
 		
 	}
 
 
 
 	return 0;
-}. 
+
+}
