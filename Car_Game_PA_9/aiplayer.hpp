@@ -31,4 +31,4 @@ private:
 
     // Determines the best lane to move to, based on obstacle positions
     int chooseBestLane(const vector<Sprite>& obstacles);
-};
+};      
