@@ -43,6 +43,12 @@ void ObstacleManager::draw(RenderWindow& window) {
 		
 }
 
+void ObstacleManager::restart() {
+
+	this->obstacles.clear();
+
+}
+
 
 //get the obstacles class member
 const vector<Sprite>& ObstacleManager::getObstacles() const

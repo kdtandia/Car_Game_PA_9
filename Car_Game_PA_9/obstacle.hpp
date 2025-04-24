@@ -26,7 +26,7 @@ public:
 	void update() override;
 	void draw(RenderWindow &window) override;
 	void setPostion(Vector2f newPosition);
-
+	void restart() override;
 private:
 	Sprite obstacle;
 	Vector2f obstacleScale;

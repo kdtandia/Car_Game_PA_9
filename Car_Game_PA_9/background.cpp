@@ -20,3 +20,8 @@ void Background::draw(RenderWindow& window) {
 	window.draw(this->backgrounds[0]);
 	window.draw(this->backgrounds[1]);
 }
+
+void Background::restart() {
+	this->backgrounds[0].setPosition({ 0.f, 0.f });
+	this->backgrounds[1].setPosition({ 0.f, this->bgHeight });
+}
